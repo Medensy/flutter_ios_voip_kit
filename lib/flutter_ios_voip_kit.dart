@@ -59,7 +59,7 @@ class FlutterIOSVoIPKit {
 
   /// method channel
 
-  Future<bool?> getVoIPToken() async {
+  Future<String?> getVoIPToken() async {
     print('🎈 getVoIPToken');
 
     if (Platform.isAndroid) {
@@ -68,7 +68,7 @@ class FlutterIOSVoIPKit {
 
     return await _channel.invokeMethod('getVoIPToken');
   }
-  Future<String?> getCallState() async {
+  Future<bool?> getCallState() async {
     print('🎈 getCallState');
 
     if (Platform.isAndroid) {
