@@ -134,6 +134,9 @@ public class SwiftFlutterIOSVoIPKitPlugin: NSObject {
             result(nil)
         }
     }
+    private func getCallState(_ call: FlutterMethodCall, result: @escaping FlutterResult){
+        result (self.voIPCenter.callKitCenter.isCallConnected)
+    }
 }
 
 extension SwiftFlutterIOSVoIPKitPlugin: UNUserNotificationCenterDelegate {
@@ -159,6 +162,7 @@ extension SwiftFlutterIOSVoIPKitPlugin: FlutterPlugin {
         case requestAuthLocalNotification
         case getLocalNotificationsSettings
         case testIncomingCall
+        case getCallState
     }
 
     // MARK: - FlutterPlugin（method channel）
@@ -189,6 +193,8 @@ extension SwiftFlutterIOSVoIPKitPlugin: FlutterPlugin {
                 self.getLocalNotificationsSettings(call, result: result)
             case .testIncomingCall:
                 self.testIncomingCall(call, result: result)
+            case .getCallState:
+                self.getCallState(call, result: result)
         }
     }
 }

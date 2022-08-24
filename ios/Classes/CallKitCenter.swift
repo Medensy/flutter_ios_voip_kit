@@ -22,7 +22,7 @@ class CallKitCenter: NSObject {
     private(set) var incomingCallerId: String?
     private(set) var incomingCallerName: String?
     private var isReceivedIncomingCall: Bool = false
-    private var isCallConnected: Bool = false
+    var isCallConnected: Bool = false
     private var maximumCallGroups: Int = 1
     var answerCallAction: CXAnswerCallAction?
 
@@ -140,4 +140,5 @@ class CallKitCenter: NSObject {
 
         self.provider?.reportCall(with: self.uuid, endedAt: nil, reason: reason)
     }
+
 }
